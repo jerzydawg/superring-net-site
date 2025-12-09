@@ -17,7 +17,11 @@ const howItWorks = getHowItWorksVariations(domain, keyword);
 let sectionH2 = { h2: `How to Get ${keyword}` };
 try {
   const { getH2Variation } = await loadKeywordVariations(keywordId);
-  sectionH2 = getH2Variation(domain, 'how-it-works');
+  const result = getH2Variation(domain, 'how-it-works');
+  // Ensure result has h2 property
+  if (result && result.h2) {
+    sectionH2 = result;
+  }
 } catch (e) {
   console.error('Failed to load keyword variations for HowItWorks:', e);
   // Will use fallback h2 above
@@ -71,10 +75,10 @@ const keywordDisplay = keywordLower.startsWith('my ') || keywordLower.startsWith
     <!-- Single Responsive Section Header - No Duplicates -->
     <div class="text-center mb-8 md:mb-16">
       <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-6">
-        {sectionH2.h2.includes('3') ? (
+        {sectionH2.h2 && sectionH2.h2.includes('3') ? (
           <Fragment set:html={sectionH2.h2.replace(/3/, `<span style="color: ${designDNA.colors.primary};">3</span>`)} />
         ) : (
-          <span>{sectionH2.h2}</span>
+          <span>{sectionH2.h2 || `How to Get ${keyword}`}</span>
         )}
       </h2>
       <p class="text-base md:text-xl text-gray-600 max-w-3xl mx-auto">
