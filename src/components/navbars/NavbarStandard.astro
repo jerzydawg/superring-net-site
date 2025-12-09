@@ -1,0 +1,47 @@
+---
+/**
+ * Standard Navbar - Classic horizontal navigation
+ * Full-width with logo left, nav center/right, CTA button
+ */
+import { getDesignDNA, getSiteName, getKeyword, getDomain } from '../../lib/site-config';
+import { getNavVariations } from '../../lib/city-content-variations';
+
+const designDNA = getDesignDNA();
+const siteName = getSiteName();
+const keyword = getKeyword();
+const domain = getDomain();
+const navContent = getNavVariations(domain);
+---
+
+<nav class="bg-white shadow-lg sticky top-0 z-40">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="/" class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center" style={`background: linear-gradient(135deg, ${designDNA.colors.primary} 0%, ${designDNA.colors.secondary} 100%);`}>
+            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+            </svg>
+          </div>
+          <div>
+            <div class="text-xl font-bold text-gray-900">{siteName}</div>
+            <div class="text-xs text-gray-500">{keyword}</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation & CTA - Dynamic -->
+      <div class="hidden md:flex items-center space-x-8">
+        {navContent.navItems.map((item) => (
+          <a href={item.href} class="nav-link text-gray-700 font-medium transition-colors duration-200">{item.label}</a>
+        ))}
+        <a href="/apply" class="no-underline font-bold py-2 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-200" style={`background: ${designDNA.colors.accent}; color: ${designDNA.colors.textOnPrimary || '#fff'};`}>
+          {navContent.ctaButton}
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+

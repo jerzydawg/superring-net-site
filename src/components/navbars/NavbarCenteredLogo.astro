@@ -1,0 +1,52 @@
+---
+/**
+ * Centered Logo Navbar - Logo in center, nav split on both sides
+ * Modern, balanced layout for brand-focused sites
+ */
+import { getDesignDNA, getSiteName, getKeyword, getDomain } from '../../lib/site-config';
+import { getNavVariations } from '../../lib/city-content-variations';
+
+const designDNA = getDesignDNA();
+const siteName = getSiteName();
+const keyword = getKeyword();
+const domain = getDomain();
+const navContent = getNavVariations(domain);
+---
+
+<nav class="bg-white shadow-lg sticky top-0 z-40">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Left Navigation -->
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="/" class="nav-link text-gray-700 font-medium transition-colors duration-200">Home</a>
+        <a href="/apply" class="nav-link text-gray-700 font-medium transition-colors duration-200">Programs</a>
+        <a href="/eligibility" class="nav-link text-gray-700 font-medium transition-colors duration-200">Eligibility</a>
+      </div>
+
+      <!-- Centered Logo -->
+      <div class="flex items-center justify-center">
+        <a href="/" class="flex flex-col items-center space-y-1">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center" style={`background: linear-gradient(135deg, ${designDNA.colors.primary} 0%, ${designDNA.colors.secondary} 100%);`}>
+            <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+            </svg>
+          </div>
+          <div class="text-center">
+            <div class="text-lg font-bold text-gray-900">{siteName}</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Right Navigation & CTA -->
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="/providers" class="nav-link text-gray-700 font-medium transition-colors duration-200">Providers</a>
+        <a href="/faq" class="nav-link text-gray-700 font-medium transition-colors duration-200">FAQ</a>
+        <a href="/apply" class="no-underline font-bold py-2 px-5 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200" style={`background: ${designDNA.colors.accent}; color: ${designDNA.colors.textOnPrimary || '#fff'};`}>
+          {navContent.ctaButton}
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+

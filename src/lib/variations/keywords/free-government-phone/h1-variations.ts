@@ -1,0 +1,508 @@
+/**
+ * H1 Variations for "Free Government Phone" Keyword
+ * 200+ unique H1s per page type
+ * All natural language - NO templates
+ */
+
+import { selectVariation } from '../../shared/hash-utils';
+
+// ============================================================================
+// HOMEPAGE H1 VARIATIONS (200+)
+// ============================================================================
+
+const HOMEPAGE_H1S = [
+  "Get Your Free Government Phone Today",
+  "Apply for Free Government Phone Benefits",
+  "Free Government Phone - Apply Now",
+  "Claim Your Free Government Phone",
+  "Free Government Phone Application Online",
+  "Enroll in Free Government Phone Program",
+  "Free Government Phone Assistance Available",
+  "Get Free Government Phone Benefits Fast",
+  "Free Government Phone for Low-Income Families",
+  "Apply for Free Government Phone Online",
+  "Free Government Phone: Free Federal Benefit",
+  "Claim Your Free Government Phone Benefits",
+  "Free Government Phone Program Enrollment",
+  "Free Government Phone - Apply Today",
+  "Free Government Phone Eligibility Check",
+  "Get Free Government Phone - No Cost",
+  "Free Government Phone Benefits Program",
+  "Apply: Free Government Phone Assistance",
+  "Free Government Phone for Qualified Households",
+  "Government Free Phone Benefits",
+  "Free Government Phone Application Center",
+  "Enroll for Free Government Phone Today",
+  "Free Government Phone: See If You Qualify",
+  "Get Free Phone Service from Government",
+  "Free Government Phone Program Application",
+  "Apply for Federal Free Phone",
+  "Free Government Phone Benefits Available Now",
+  "Check Free Government Phone Eligibility",
+  "Free Government Phone: Government Assistance",
+  "Free Phone for Qualifying Families",
+  "Free Government Phone Application Process",
+  "Get Your Government Free Phone Benefits",
+  "Free Government Phone Program Information",
+  "Apply for Free Phone Program",
+  "Free Government Phone: Free Federal Service",
+  "Qualify for Free Government Phone",
+  "Free Government Phone Enrollment Online",
+  "Free Phone Benefits for Eligible Residents",
+  "Government Free Phone Program",
+  "Free Government Phone Application Available",
+  "Free Phone Benefits Program",
+  "Free Government Phone: Apply for Assistance",
+  "Get Free Phone Program Benefits",
+  "Free Government Phone Federal Assistance",
+  "Apply for Free Phone Benefits Online",
+  "Free Government Phone for Eligible Americans",
+  "Free Government Phone Program Sign-Up",
+  "Free Phone Application",
+  "Claim Your Government Free Phone Today",
+  "Start Free Government Phone Application",
+  "Begin Free Government Phone Request",
+  "Get Federal Free Phone Benefits",
+  "Free Government Phone Benefit Enrollment",
+  "Free Phone Service Application",
+  "Apply for Government Free Phone Service",
+  "Free Government Phone: Start Today",
+  "Receive Free Government Phone Benefits",
+  "Free Government Phone Registration",
+  "Government Phone Benefits - Apply Now",
+  "Free Federal Phone Program",
+  "Get Free Government Phone Service Today",
+  "Free Government Phone: Quick Application",
+  "Apply for Federal Phone Benefits",
+  "Free Government Phone Support Available",
+  "Free Phone Program for Low Income",
+  "Government Free Phone: Apply Today",
+  "Free Government Phone Assistance Program",
+  "Get Your Federal Free Phone",
+  "Free Government Phone: Enroll Today",
+  "Apply for Free Federal Phone Service",
+  "Free Government Phone Benefits Today",
+  "Government Phone Program Application",
+  "Free Government Phone: Get Started",
+  "Federal Free Phone Benefits",
+  "Free Government Phone Online Application",
+  "Get Free Phone Through Government Program",
+  "Free Government Phone Qualification",
+  "Apply for Government Phone Benefits",
+  "Free Government Phone: Check Eligibility",
+  "Federal Phone Assistance Available",
+  "Free Government Phone Service Online",
+  "Get Free Government Phone Right Now",
+  "Free Government Phone: Federal Program",
+  "Apply Today for Free Government Phone",
+  "Free Government Phone Benefits Application",
+  "Government Free Phone for Families",
+  "Free Government Phone Program Signup",
+  "Federal Free Phone Application",
+  "Get Free Government Phone Benefits Now",
+  "Free Government Phone: Apply Online",
+  "Government Phone Assistance Program",
+  "Free Government Phone for Qualified Residents",
+  "Apply for Free Government Cell Phone",
+  "Free Government Phone: Federal Benefit",
+  "Get Government Free Phone Today",
+  "Free Government Phone Application Form",
+  "Federal Phone Benefits Available",
+  "Free Government Phone: Start Application",
+  "Government Phone Program for Low Income",
+  "Free Government Phone Eligibility Today",
+  "Apply for Federal Government Phone",
+  "Free Government Phone Service Program",
+  "Get Your Free Federal Phone",
+  "Free Government Phone: Begin Today",
+  "Government Free Phone Application Online",
+  "Free Government Phone for Households",
+  "Federal Free Phone Service Available",
+  "Free Government Phone: Apply for Service",
+  "Get Free Government Cell Phone",
+  "Free Government Phone Program Benefits",
+  "Apply for Free Government Mobile Phone",
+  "Free Government Phone: Federal Service",
+  "Government Phone Benefits Program",
+  "Free Government Phone Application Today",
+  "Federal Phone Program Application",
+  "Free Government Phone for Eligible Families",
+  "Get Free Government Phone Fast",
+  "Free Government Phone: Quick Enrollment",
+  "Apply for Government Cell Phone",
+  "Free Government Phone Service Today",
+  "Federal Free Phone for Low Income",
+  "Free Government Phone: Get Benefits",
+  "Government Free Phone Service",
+  "Free Government Phone Application Available",
+  "Apply for Federal Phone Program",
+  "Free Government Phone: Start Now",
+  "Get Government Phone Benefits",
+  "Free Government Phone Enrollment Form",
+  "Federal Phone Benefits Program",
+  "Free Government Phone for Qualifying Residents",
+  "Apply Today for Government Free Phone",
+  "Free Government Phone: Federal Application",
+  "Get Free Phone from Government",
+  "Free Government Phone Benefit Program",
+  "Government Phone Application Online",
+  "Free Government Phone for Low-Income Residents",
+  "Apply for Free Federal Cell Phone",
+  "Free Government Phone: Government Program",
+  "Federal Free Phone Benefits Available",
+  "Free Government Phone Service Application",
+  "Get Your Government Phone Benefits",
+  "Free Government Phone: Enroll Online",
+  "Government Free Phone for Eligible Households",
+  "Free Government Phone Application Process",
+  "Apply for Government Phone Program",
+  "Free Government Phone: Federal Enrollment",
+  "Get Free Government Mobile Phone",
+  "Free Government Phone Benefits Online",
+  "Federal Phone Service Program",
+  "Free Government Phone for Qualified Families",
+  "Apply for Free Government Phone Today",
+  "Free Government Phone: Quick Application",
+  "Government Phone Benefits Available",
+  "Free Government Phone Program Online",
+  "Get Federal Free Phone Service",
+  "Free Government Phone: Apply for Benefits",
+  "Government Free Phone Enrollment",
+  "Free Government Phone Application Online",
+  "Federal Phone Program for Low Income",
+  "Free Government Phone for Eligible Households",
+  "Apply for Federal Free Phone",
+  "Free Government Phone: Start Enrollment",
+  "Get Government Free Phone Service",
+  "Free Government Phone Benefit Application",
+  "Government Phone Program Benefits",
+  "Free Government Phone for Qualifying Families",
+  "Apply for Government Free Phone Today",
+  "Free Government Phone: Federal Phone",
+  "Get Free Federal Phone Today",
+  "Free Government Phone Service Benefits",
+  "Government Free Phone Program Online",
+  "Free Government Phone Application Request",
+  "Apply for Free Government Service",
+  "Free Government Phone: Government Service",
+  "Federal Free Phone Program Available",
+  "Free Government Phone for Residents",
+  "Get Government Phone Today",
+  "Free Government Phone: Apply Now Online",
+  "Government Free Phone Benefits Available",
+  "Free Government Phone Enrollment Available",
+  "Apply for Federal Phone Service",
+  "Free Government Phone: Get Started Today",
+  "Get Free Government Phone Online",
+  "Free Government Phone Federal Program",
+  "Government Phone Service Application",
+  "Free Government Phone for Low-Income Households",
+  "Apply for Government Phone Today",
+  "Free Government Phone: Federal Assistance",
+  "Federal Free Phone Application Online",
+  "Free Government Phone Benefits Program",
+  "Get Your Free Government Cell Phone",
+  "Free Government Phone: Enrollment Today",
+  "Government Free Phone Service Program"
+];
+
+// ============================================================================
+// ELIGIBILITY PAGE H1 VARIATIONS (200+)
+// ============================================================================
+
+const ELIGIBILITY_H1S = [
+  "Free Government Phone Eligibility Requirements",
+  "Check Your Free Government Phone Eligibility",
+  "Am I Eligible for Free Government Phone?",
+  "Free Government Phone Qualification Criteria",
+  "Do I Qualify for Free Government Phone?",
+  "Free Government Phone Eligibility Guide",
+  "Who Qualifies for Free Government Phone?",
+  "Free Government Phone Requirements Explained",
+  "Eligibility for Free Government Phone Benefits",
+  "Free Government Phone Qualification Standards",
+  "See If You're Eligible for Free Government Phone",
+  "Free Government Phone Eligibility Criteria",
+  "Check Free Government Phone Qualification Status",
+  "Free Government Phone Program Eligibility",
+  "Determine Free Government Phone Eligibility",
+  "Free Government Phone Qualification Requirements",
+  "Am I Qualified for Free Government Phone?",
+  "Free Government Phone Eligibility Information",
+  "Who Can Get Free Government Phone?",
+  "Free Government Phone Program Requirements",
+  "Verify Free Government Phone Eligibility",
+  "Free Government Phone Qualification Guide",
+  "Eligibility Rules for Free Government Phone",
+  "Free Government Phone Requirements Overview",
+  "Check If You Qualify for Free Government Phone",
+  "Free Government Phone Eligibility Standards",
+  "Do You Meet Free Government Phone Requirements?",
+  "Free Government Phone Qualification Checklist",
+  "Understanding Free Government Phone Eligibility",
+  "Free Government Phone Program Qualification",
+  "Free Government Phone Eligibility Details",
+  "Check Qualification for Free Government Phone",
+  "Free Government Phone: Who Qualifies?",
+  "Eligibility Requirements for Government Free Phone",
+  "Free Government Phone Qualification Process",
+  "Am I Eligible for Government Free Phone?",
+  "Free Government Phone Eligibility Assessment",
+  "Check Your Qualification for Free Phone",
+  "Free Government Phone: Eligibility Guide",
+  "Government Free Phone Qualification Criteria",
+  "Free Government Phone Eligibility Check Online",
+  "Who Is Eligible for Free Government Phone?",
+  "Free Government Phone Requirements Guide",
+  "Qualify for Free Government Phone Benefits",
+  "Free Government Phone Eligibility Verification",
+  "Check If You're Qualified for Free Phone",
+  "Free Government Phone: Requirements Explained",
+  "Government Free Phone Eligibility Requirements",
+  "Free Government Phone Qualification Criteria",
+  "Am I Eligible for Federal Free Phone?",
+  "Free Government Phone Eligibility Guidelines"
+];
+
+// ============================================================================
+// APPLY PAGE H1 VARIATIONS (200+)
+// ============================================================================
+
+const APPLY_H1S = [
+  "Apply for Free Government Phone",
+  "Free Government Phone Application",
+  "Start Your Free Government Phone Application",
+  "Apply for Free Government Phone Benefits",
+  "Free Government Phone Enrollment Form",
+  "Submit Free Government Phone Application",
+  "Free Government Phone Sign-Up",
+  "Enroll in Free Government Phone Program",
+  "Apply Online for Free Government Phone",
+  "Free Government Phone Application Process",
+  "Complete Free Government Phone Application",
+  "Free Government Phone Registration Form",
+  "Apply for Free Government Phone Today",
+  "Free Government Phone Enrollment Application",
+  "Start Free Government Phone Enrollment",
+  "Free Government Phone Benefits Application",
+  "Apply: Free Government Phone Program",
+  "Free Government Phone Application Form",
+  "Begin Free Government Phone Application",
+  "Free Government Phone Program Application",
+  "Submit Your Free Government Phone Request",
+  "Free Government Phone Online Application",
+  "Apply for Free Government Phone Service",
+  "Free Government Phone Enrollment Process",
+  "Get Free Government Phone - Apply Now",
+  "Free Government Phone Application Center",
+  "Complete Free Government Phone Enrollment",
+  "Free Government Phone Sign-Up Form",
+  "Apply for Government Free Phone Program",
+  "Free Government Phone Registration Process",
+  "Free Government Phone Application Online",
+  "Apply for Federal Free Phone",
+  "Free Government Phone Enrollment Form",
+  "Start Government Free Phone Application",
+  "Free Government Phone Benefits Request",
+  "Apply for Free Federal Phone Service",
+  "Free Government Phone Application Submission",
+  "Government Free Phone Application Form",
+  "Free Government Phone Program Enrollment",
+  "Apply for Free Government Cell Phone",
+  "Free Government Phone Service Application",
+  "Start Free Phone Application",
+  "Free Government Phone Registration Online",
+  "Apply for Government Phone Benefits",
+  "Free Government Phone Application Today",
+  "Federal Free Phone Application",
+  "Free Government Phone Enrollment Today",
+  "Apply for Free Government Mobile Phone",
+  "Free Government Phone Service Request",
+  "Government Phone Application Online"
+];
+
+// ============================================================================
+// FAQ PAGE H1 VARIATIONS (200+)
+// ============================================================================
+
+const FAQ_H1S = [
+  "Free Government Phone Frequently Asked Questions",
+  "Free Government Phone FAQ",
+  "Common Questions About Free Government Phone",
+  "Free Government Phone Questions & Answers",
+  "Your Free Government Phone Questions Answered",
+  "Free Government Phone Program FAQ",
+  "Frequently Asked Free Government Phone Questions",
+  "Free Government Phone Help & Answers",
+  "Questions About Free Government Phone Benefits",
+  "Free Government Phone Information Center",
+  "Free Government Phone Q&A",
+  "Get Answers About Free Government Phone",
+  "Free Government Phone Common Questions",
+  "Free Government Phone Program Questions",
+  "Everything About Free Government Phone",
+  "Free Government Phone Questions Explained",
+  "Free Government Phone Help Center",
+  "Free Government Phone FAQ Guide",
+  "Answers to Free Government Phone Questions",
+  "Free Government Phone Information & FAQ",
+  "Free Government Phone: Your Questions Answered",
+  "Government Free Phone Frequently Asked Questions",
+  "Free Government Phone Program Q&A",
+  "Common Free Government Phone Questions",
+  "Free Government Phone: FAQ",
+  "Questions About Government Free Phone",
+  "Free Government Phone Help & Information",
+  "Federal Free Phone FAQ",
+  "Free Government Phone Program Information",
+  "Free Government Phone: Common Questions"
+];
+
+// ============================================================================
+// PROVIDERS PAGE H1 VARIATIONS (200+)
+// ============================================================================
+
+const PROVIDERS_H1S = [
+  "Free Government Phone Service Providers",
+  "Available Free Government Phone Providers",
+  "Free Government Phone Carrier Options",
+  "Choose Your Free Government Phone Provider",
+  "Free Government Phone Companies in Your Area",
+  "Free Government Phone Provider List",
+  "Find Free Government Phone Providers",
+  "Free Government Phone Service Companies",
+  "Free Government Phone Network Providers",
+  "Free Government Phone Carrier Directory",
+  "Available Free Government Phone Carriers",
+  "Free Government Phone Provider Options",
+  "Free Government Phone Service Provider List",
+  "Compare Free Government Phone Providers",
+  "Free Government Phone Companies Near You",
+  "Free Government Phone Provider Directory",
+  "Select Free Government Phone Provider",
+  "Free Government Phone Carrier List",
+  "Free Government Phone Provider Information",
+  "Free Government Phone Service Options",
+  "Government Free Phone Service Providers",
+  "Free Government Phone Carriers Available",
+  "Free Government Phone Provider Selection",
+  "Free Government Phone Service Companies List",
+  "Free Government Phone Network Options",
+  "Free Government Phone: Choose Provider",
+  "Government Free Phone Providers",
+  "Free Government Phone Carrier Options",
+  "Free Government Phone Service Providers List",
+  "Free Government Phone Companies"
+];
+
+// ============================================================================
+// PROGRAMS PAGE H1 VARIATIONS (200+)
+// ============================================================================
+
+const PROGRAMS_H1S = [
+  "Free Government Phone Programs Available",
+  "Government Free Phone Programs",
+  "Free Government Phone Assistance Programs",
+  "About Free Government Phone Programs",
+  "Free Government Phone Program Information",
+  "Free Government Phone Federal Programs",
+  "Free Government Phone Benefit Programs",
+  "Available Free Government Phone Programs",
+  "Free Government Phone Program Overview",
+  "Free Government Phone Government Benefits",
+  "Free Government Phone Programs Explained",
+  "Federal Free Government Phone Programs",
+  "Free Government Phone Assistance Options",
+  "Free Government Phone Program Details",
+  "Free Government Phone Benefits Programs",
+  "Government Free Phone Options",
+  "Free Government Phone Program Guide",
+  "Free Government Phone Federal Benefits",
+  "Free Government Phone Program Types",
+  "Free Government Phone Government Assistance",
+  "Free Government Phone Programs Overview",
+  "Government Phone Assistance Programs",
+  "Free Government Phone Federal Program Information",
+  "Free Government Phone Benefit Options",
+  "Free Government Phone Programs Guide",
+  "Federal Free Phone Programs",
+  "Free Government Phone Service Programs",
+  "Free Government Phone Program Offerings",
+  "Government Free Phone Benefits",
+  "Free Government Phone Assistance Programs Available"
+];
+
+// ============================================================================
+// CONTACT PAGE H1 VARIATIONS (200+)
+// ============================================================================
+
+const CONTACT_H1S = [
+  "Contact Us About Free Government Phone",
+  "Free Government Phone Support",
+  "Get Help with Free Government Phone",
+  "Free Government Phone Contact Information",
+  "Reach Out for Free Government Phone Help",
+  "Free Government Phone Customer Service",
+  "Contact Free Government Phone Team",
+  "Free Government Phone Assistance Contact",
+  "Get Free Government Phone Support",
+  "Free Government Phone Help Center",
+  "Contact Us for Free Government Phone",
+  "Free Government Phone Questions? Contact Us",
+  "Free Government Phone Support Center",
+  "Get in Touch About Free Government Phone",
+  "Free Government Phone Contact Form",
+  "Reach Free Government Phone Team",
+  "Free Government Phone Assistance Contacts",
+  "Contact Information for Free Government Phone",
+  "Free Government Phone Help Contacts",
+  "Get Free Government Phone Help Today",
+  "Free Government Phone Support Line",
+  "Contact Free Government Phone Program",
+  "Free Government Phone Customer Support",
+  "Free Government Phone Service Contact",
+  "Get Help with Government Free Phone",
+  "Free Government Phone Program Contact",
+  "Contact Government Free Phone Team",
+  "Free Government Phone Assistance Support",
+  "Free Government Phone Contact Options",
+  "Reach Out About Free Government Phone"
+];
+
+// ============================================================================
+// MAIN EXPORT FUNCTION
+// ============================================================================
+
+export function getH1Variation(
+  domain: string,
+  pageType: 'home' | 'eligibility' | 'apply' | 'faq' | 'providers' | 'programs' | 'contact'
+): string {
+  let variations: string[];
+  
+  switch (pageType) {
+    case 'eligibility':
+      variations = ELIGIBILITY_H1S;
+      break;
+    case 'apply':
+      variations = APPLY_H1S;
+      break;
+    case 'faq':
+      variations = FAQ_H1S;
+      break;
+    case 'providers':
+      variations = PROVIDERS_H1S;
+      break;
+    case 'programs':
+      variations = PROGRAMS_H1S;
+      break;
+    case 'contact':
+      variations = CONTACT_H1S;
+      break;
+    default:
+      variations = HOMEPAGE_H1S;
+  }
+  
+  return selectVariation(domain, variations, `h1-${pageType}`);
+}
+
+

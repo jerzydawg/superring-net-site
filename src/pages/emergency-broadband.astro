@@ -1,0 +1,278 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getSiteURL, getSiteName, getDomain } from '../lib/site-config';
+
+const SITE_URL = getSiteURL();
+const SITE_NAME = getSiteName();
+const DOMAIN = getDomain();
+
+const title = `Emergency Broadband Benefit (EBB) 2025: Transition to ACP Program | ${DOMAIN}`;
+const description = "Learn about the Emergency Broadband Benefit (EBB) transition to ACP. Former EBB users: check your ACP eligibility, find providers, and continue receiving internet discounts. Updated for 2025.";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Emergency Broadband Benefit (EBB) 2025: Transition to ACP Program",
+  "description": "Learn about the Emergency Broadband Benefit (EBB) transition to ACP. Former EBB users: check your ACP eligibility, find providers, and continue receiving internet discounts. Updated for 2025.",
+  "author": {
+    "@type": "Organization",
+    "name": "Government Phone Service"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": DOMAIN,
+    "url": SITE_URL
+  },
+  "datePublished": "2025-01-08",
+  "dateModified": "2025-01-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `${SITE_URL}/emergency-broadband`
+  }
+};
+
+const faqData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What was the Emergency Broadband Benefit (EBB)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Emergency Broadband Benefit (EBB) was a temporary federal program launched in response to the COVID-19 pandemic. It provided up to $50/month off internet service (or $75 on Tribal lands) and a one-time discount on devices for eligible low-income households."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the EBB still available?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, the EBB ended in December 2021. It was replaced by the Affordable Connectivity Program (ACP), which offers similar benefits with updated eligibility and funding."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to reapply for ACP if I was on EBB?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most EBB participants were automatically transferred to ACP, but you should check with your provider to confirm your status and ensure you're still receiving benefits."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should former EBB users do now?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Former EBB users should check their ACP eligibility, choose a provider that participates in ACP, and apply for the new program to continue receiving internet and phone service discounts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do ACP benefits compare to EBB?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ACP provides up to $30/month discount (vs $50 for EBB) but has broader eligibility and more stable funding. ACP can also be combined with Lifeline benefits for additional savings."
+      }
+    }
+  ]
+};
+---
+
+<Layout title={title} description={description}>
+  <!-- Structured Data for Article -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqData)} />
+
+  <main class="prose lg:prose-xl mx-auto py-12 px-4">
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="Breadcrumb" class="mb-6">
+      <ol class="flex items-center space-x-2 text-sm text-gray-600">
+        <li><a href="/" class="hover:text-blue-600">Home</a></li>
+        <li class="text-gray-400">/</li>
+        <li class="text-gray-900">Emergency Broadband</li>
+      </ol>
+    </nav>
+
+    <h1 class="text-4xl font-bold text-gray-900 mb-6">Emergency Broadband Benefit (EBB) 2025: Transition to ACP Program</h1>
+    
+    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8">
+      <p class="text-yellow-800 font-medium">
+        <strong>Important Update:</strong> The Emergency Broadband Benefit (EBB) ended in December 2021 and has been replaced by the 
+        <a href="/acp-program" class="text-yellow-600 hover:underline">Affordable Connectivity Program (ACP)</a>. 
+        Former EBB users should check their ACP eligibility to continue receiving benefits.
+      </p>
+    </div>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">What Was the Emergency Broadband Benefit (EBB)?</h2>
+      <p class="text-lg text-gray-700 mb-4">
+        The <strong>Emergency Broadband Benefit (EBB)</strong> was a temporary federal program launched in response to the COVID-19 pandemic. It provided discounts on internet service for eligible low-income households during a critical time when connectivity was essential for work, education, and healthcare.
+      </p>
+      <div class="bg-blue-50 p-6 rounded-lg mb-6">
+        <h3 class="text-xl font-medium text-blue-800 mb-3">EBB Benefits (2021)</h3>
+        <ul class="space-y-2 text-blue-700">
+          <li>• Up to $50/month off internet service</li>
+          <li>• Up to $75/month on Tribal lands</li>
+          <li>• One-time discount on devices (laptop, tablet, or desktop)</li>
+          <li>• Helped millions of Americans stay connected during the pandemic</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Transition to the Affordable Connectivity Program (ACP)</h2>
+      <p class="text-lg text-gray-700 mb-4">
+        The EBB ended in December 2021 and was replaced by the <a href="/acp-program" class="text-blue-600 hover:underline">Affordable Connectivity Program (ACP)</a>. 
+        This transition was designed to provide more sustainable, long-term support for affordable internet access.
+      </p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-green-50 p-6 rounded-lg">
+          <h3 class="text-xl font-medium text-green-800 mb-3">What Changed?</h3>
+          <ul class="space-y-2 text-green-700">
+            <li>• Monthly discount: $50 → $30 ($75 on Tribal lands)</li>
+            <li>• Broader eligibility criteria</li>
+            <li>• More stable, long-term funding</li>
+            <li>• Can be combined with Lifeline benefits</li>
+          </ul>
+        </div>
+        <div class="bg-blue-50 p-6 rounded-lg">
+          <h3 class="text-xl font-medium text-blue-800 mb-3">What Stayed the Same?</h3>
+          <ul class="space-y-2 text-blue-700">
+            <li>• No credit checks required</li>
+            <li>• No contracts or hidden fees</li>
+            <li>• Easy online application process</li>
+            <li>• Device discount still available</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">What Should Former EBB Users Do Now?</h2>
+      <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white p-8 rounded-lg mb-6">
+        <h3 class="text-xl font-medium mb-4">Action Plan for Former EBB Participants</h3>
+        <ol class="list-decimal list-inside space-y-3 text-lg">
+          <li><strong>Check Your Status:</strong> Verify if you were automatically transferred to ACP</li>
+          <li><strong>Verify Eligibility:</strong> <a href="/apply" rel="noreferrer" class="text-yellow-200 hover:underline">Check your ACP eligibility</a></li>
+          <li><strong>Find Providers:</strong> <a href="/providers" class="text-yellow-200 hover:underline">Locate ACP providers</a> in your area</li>
+          <li><strong>Apply for ACP:</strong> Complete application to continue receiving benefits</li>
+        </ol>
+      </div>
+      <p class="text-gray-700">
+        <strong>Good news:</strong> Most EBB participants were automatically transferred to ACP, but it's important to confirm your status and ensure you're still receiving the benefits you need.
+      </p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">EBB vs ACP Comparison</h2>
+      <div>
+        <table class="w-full border-collapse border border-gray-300">
+          <thead>
+            <tr class="bg-gray-100">
+              <th class="border border-gray-300 p-3 text-left">Feature</th>
+              <th class="border border-gray-300 p-3 text-left">Emergency Broadband Benefit (EBB)</th>
+              <th class="border border-gray-300 p-3 text-left">Affordable Connectivity Program (ACP)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-300 p-3 font-medium">Monthly Discount</td>
+              <td class="border border-gray-300 p-3">$50/month ($75 Tribal)</td>
+              <td class="border border-gray-300 p-3">$30/month ($75 Tribal)</td>
+            </tr>
+            <tr class="bg-gray-50">
+              <td class="border border-gray-300 p-3 font-medium">Device Discount</td>
+              <td class="border border-gray-300 p-3">$100 one-time</td>
+              <td class="border border-gray-300 p-3">$100 one-time</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-300 p-3 font-medium">Program Duration</td>
+              <td class="border border-gray-300 p-3">Temporary (2021)</td>
+              <td class="border border-gray-300 p-3">Long-term</td>
+            </tr>
+            <tr class="bg-gray-50">
+              <td class="border border-gray-300 p-3 font-medium">Lifeline Combination</td>
+              <td class="border border-gray-300 p-3">No</td>
+              <td class="border border-gray-300 p-3">Yes</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-300 p-3 font-medium">Eligibility</td>
+              <td class="border border-gray-300 p-3">Limited criteria</td>
+              <td class="border border-gray-300 p-3">Broader criteria</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div class="border border-gray-200 rounded-lg p-6">
+          <h3 class="text-xl font-medium text-gray-800 mb-3">Is the EBB still available?</h3>
+          <p class="text-gray-700">No, the Emergency Broadband Benefit ended in December 2021. The Affordable Connectivity Program (ACP) is now the current program for affordable internet and phone service.</p>
+        </div>
+        
+        <div class="border border-gray-200 rounded-lg p-6">
+          <h3 class="text-xl font-medium text-gray-800 mb-3">Do I need to reapply for ACP if I was on EBB?</h3>
+          <p class="text-gray-700">Most EBB participants were automatically transferred to ACP, but you should check with your provider to confirm your status and ensure you're still receiving benefits.</p>
+        </div>
+        
+        <div class="border border-gray-200 rounded-lg p-6">
+          <h3 class="text-xl font-medium text-gray-800 mb-3">How do ACP benefits compare to EBB?</h3>
+          <p class="text-gray-700">ACP provides up to $30/month discount (vs $50 for EBB) but has broader eligibility and more stable funding. ACP can also be combined with Lifeline benefits for additional savings.</p>
+        </div>
+        
+        <div class="border border-gray-200 rounded-lg p-6">
+          <h3 class="text-xl font-medium text-gray-800 mb-3">What if I wasn't automatically transferred?</h3>
+          <p class="text-gray-700">If you weren't automatically transferred, you can apply for ACP through any participating provider. The application process is simple and most approvals happen instantly online.</p>
+        </div>
+        
+        <div class="border border-gray-200 rounded-lg p-6">
+          <h3 class="text-xl font-medium text-gray-800 mb-3">Can I still get a device discount?</h3>
+          <p class="text-gray-700">Yes, ACP still offers a one-time $100 discount on devices (laptop, tablet, or desktop) when you sign up with a participating provider.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 rounded-lg mb-8">
+      <h2 class="text-2xl font-bold mb-4">Continue Your Internet Benefits</h2>
+      <p class="text-lg mb-6">Don't lose your internet connection! Former EBB users can continue receiving discounts through the ACP program.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/apply" rel="noreferrer" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-4 px-8 rounded-lg text-lg transition duration-300 no-underline text-center">
+          Check ACP Eligibility
+        </a>
+        <a href="/acp-program" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg transition duration-300 no-underline text-center">
+          Learn About ACP
+        </a>
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Related Government Phone Programs</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <a href="/acp-program" class="block p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow">
+          <h3 class="text-lg font-medium text-gray-800 mb-2">Affordable Connectivity Program</h3>
+          <p class="text-gray-600">The current program that replaced EBB, offering internet and phone service discounts.</p>
+        </a>
+        <a href="/lifeline-program" class="block p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow">
+          <h3 class="text-lg font-medium text-gray-800 mb-2">Lifeline Program</h3>
+          <p class="text-gray-600">Federal program providing free or discounted phone service to eligible households.</p>
+        </a>
+        <a href="/programs" class="block p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow">
+          <h3 class="text-lg font-medium text-gray-800 mb-2">All Programs</h3>
+          <p class="text-gray-600">Complete overview of all government phone and internet assistance programs.</p>
+        </a>
+      </div>
+    </section>
+
+    <div class="bg-gray-50 p-6 rounded-lg">
+      <p class="text-gray-700">
+        <strong>Need assistance?</strong> Visit our <a href="/faq" class="text-blue-600 hover:underline">FAQ page</a> for more answers, or <a href="/contact" class="text-blue-600 hover:underline">contact us</a> for personalized help with your transition from EBB to ACP. 
+        We're here to help you stay connected!
+      </p>
+    </div>
+  </main>
+</Layout>

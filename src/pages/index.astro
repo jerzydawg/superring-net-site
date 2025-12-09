@@ -1,0 +1,77 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSelector from '../components/HeroSelector.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import ProgramsSection from '../components/sections/ProgramsSection.astro';
+import FeaturesSection from '../components/sections/FeaturesSection.astro';
+import StatesSection from '../components/sections/StatesSection.astro';
+import CitiesSection from '../components/sections/CitiesSection.astro';
+import CTASection from '../components/sections/CTASection.astro';
+import { getSiteConfig, getDesignDNA, getSiteName, getKeyword, getDomain, getSiteURL, getKeywordId } from '../lib/site-config';
+import { generateCSSVariables, getGoogleFontsURL } from '../lib/design-dna';
+import { getContentVariations } from '../lib/city-content-variations';
+import { loadKeywordVariations } from '../lib/variations/shared/keyword-loader';
+
+export const prerender = false;
+
+// Get site configuration
+const siteConfig = getSiteConfig();
+const designDNA = getDesignDNA();
+const siteName = getSiteName();
+const keyword = getKeyword();
+const domain = getDomain();
+const siteURL = getSiteURL();
+const keywordId = getKeywordId();
+
+// Get content variations for this domain (legacy hero/CTA variations)
+const content = getContentVariations(domain);
+
+// Load keyword-specific variations (NEW - H1, H2, Meta) with error handling
+let h1Content = { h1: `Get Your Free ${keyword} Today` };
+let metaContent = { title: `${siteName} - ${keyword}`, description: `Apply for your ${keyword.toLowerCase()} through ${siteName}.` };
+
+try {
+  const { getH1Variation, getH2Variation, getMetaVariations } = await loadKeywordVariations(keywordId);
+  h1Content = getH1Variation(domain, 'homepage');
+  metaContent = getMetaVariations(domain, 'homepage');
+} catch (e) {
+  console.error('Failed to load keyword variations for homepage:', e);
+  // Will use fallback values above
+}
+
+// Generate dynamic CSS and fonts
+const cssVariables = generateCSSVariables(designDNA);
+const fontsURL = getGoogleFontsURL(designDNA);
+
+// Get section order from Design DNA (for dynamic page assembly)
+// This allows different sites to have different section layouts
+const sectionOrder = designDNA.advancedLayout?.sectionOrder || ['howItWorks', 'features', 'programs', 'states', 'cities', 'cta'];
+
+// SEO Meta Tags - Dynamic from keyword variations (NEW)
+const title = metaContent.title;
+const description = metaContent.description;
+const canonical = `${siteURL}/`;
+---
+
+<Layout title={title} description={description} canonical={canonical}>
+  <main class="min-h-screen">
+    <!-- Hero Section - Always first, dynamic based on design style -->
+    <HeroSelector customH1={h1Content.h1} />
+
+    <!-- Dynamic Section Ordering - Each site can have different section order -->
+    {Array.isArray(sectionOrder) && sectionOrder.map((section) => {
+      try {
+        if (section === 'howItWorks') return <HowItWorks />;
+        if (section === 'programs') return <ProgramsSection />;
+        if (section === 'features') return <FeaturesSection />;
+        if (section === 'states') return <StatesSection />;
+        if (section === 'cities') return <CitiesSection />;
+        if (section === 'cta') return <CTASection />;
+        return null;
+      } catch (error) {
+        console.error(`Section render error for "${section}":`, error);
+        return null;  // Fail gracefully, don't crash entire page
+      }
+    })}
+  </main>
+</Layout>

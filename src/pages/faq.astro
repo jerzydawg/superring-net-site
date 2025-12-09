@@ -1,0 +1,275 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getSiteURL, getDomain, getKeywordId, getDesignDNA } from '../lib/site-config';
+import { loadKeywordVariations } from '../lib/variations/shared/keyword-loader';
+
+const SITE_URL = getSiteURL();
+const domain = getDomain();
+const keywordId = getKeywordId();
+const designDNA = getDesignDNA();
+
+// Load keyword-specific variations
+const { getH1Variation, getH2Variation, getMetaVariations, getFAQVariations } = await loadKeywordVariations(keywordId);
+
+// Dynamic SEO Meta Tags from keyword variations
+const metaContent = getMetaVariations(domain, 'faq');
+const title = metaContent.title;
+const description = metaContent.description;
+const canonical = `${SITE_URL}/faq`;
+
+// Dynamic H1 from keyword variations
+const h1Content = getH1Variation(domain, 'faq');
+
+// Get FAQ content from keyword-specific variations
+const faqContent = getFAQVariations(domain);
+---
+
+<Layout title={title} description={description} canonical={canonical}>
+  <main class="min-h-screen">
+    <!-- Hero Section -->
+    <section style={`background: linear-gradient(135deg, ${designDNA.colors.primary} 0%, ${designDNA.colors.primaryDark || designDNA.colors.primary} 100%);`} class="text-white py-20">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+          {h1Content.h1}
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+          Discover answers to frequently asked questions about federal communication assistance programs, 
+          qualification criteria, and application procedures.
+        </p>
+        <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 max-w-2xl mx-auto">
+          <p class="text-lg mb-4">Quick Navigation</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
+            <div class="flex items-center">
+              <span class="text-blue-300 mr-2">•</span>
+              <span>Eligibility</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-blue-300 mr-2">•</span>
+              <span>Application</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-blue-300 mr-2">•</span>
+              <span>Benefits</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Categories -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-8 mb-12">
+          <div class="text-center">
+            <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl" aria-label="Checkmark icon">✅</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Qualification Requirements</h3>
+            <p class="text-gray-600">
+              Understand eligibility criteria and who qualifies for federal communication assistance.
+            </p>
+          </div>
+          <div class="text-center">
+            <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl" aria-label="Document icon">📝</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Application Procedures</h3>
+            <p class="text-gray-600">
+              Learn about the application process and required documentation for approval.
+            </p>
+          </div>
+          <div class="text-center">
+            <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl" aria-label="Phone icon">📱</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Program Benefits</h3>
+            <p class="text-gray-600">
+              Explore the benefits included with your federal communication assistance and usage guidelines.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ Accordion -->
+        <div class="max-w-4xl mx-auto space-y-4">
+          <!-- Eligibility Section -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <h2 class="text-white p-6 text-xl font-bold" style={`background-color: ${designDNA.colors.primary};`}>
+              {faqContent.sections.eligibility.title}
+            </h2>
+            
+            <div class="space-y-4 p-6">
+              {faqContent.sections.eligibility.faqs.map((faq, index) => (
+                <div class={index < faqContent.sections.eligibility.faqs.length - 1 ? "border-b border-gray-200 pb-4" : "pb-4"}>
+                  <h3 class="text-lg font-bold mb-2">{faq.question}</h3>
+                  <p class="text-gray-600">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Application Section -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <h2 class="text-white p-6 text-xl font-bold" style={`background-color: ${designDNA.colors.secondary};`}>
+              {faqContent.sections.application.title}
+            </h2>
+            
+            <div class="space-y-4 p-6">
+              {faqContent.sections.application.faqs.map((faq, index) => (
+                <div class={index < faqContent.sections.application.faqs.length - 1 ? "border-b border-gray-200 pb-4" : "pb-4"}>
+                  <h3 class="text-lg font-bold mb-2">{faq.question}</h3>
+                  <p class="text-gray-600">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Service & Benefits Section -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <h2 class="text-white p-6 text-xl font-bold" style={`background-color: ${designDNA.colors.accent};`}>
+              {faqContent.sections.benefits.title}
+            </h2>
+            
+            <div class="space-y-4 p-6">
+              {faqContent.sections.benefits.faqs.map((faq, index) => (
+                <div class={index < faqContent.sections.benefits.faqs.length - 1 ? "border-b border-gray-200 pb-4" : "pb-4"}>
+                  <h3 class="text-lg font-bold mb-2">{faq.question}</h3>
+                  <p class="text-gray-600">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Program Details Section -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <h2 class="text-white p-6 text-xl font-bold" style={`background-color: ${designDNA.colors.primary};`}>
+              {faqContent.sections.programs.title}
+            </h2>
+            
+            <div class="space-y-4 p-6">
+              {faqContent.sections.programs.faqs.map((faq, index) => (
+                <div class={index < faqContent.sections.programs.faqs.length - 1 ? "border-b border-gray-200 pb-4" : "pb-4"}>
+                  <h3 class="text-lg font-bold mb-2">{faq.question}</h3>
+                  <p class="text-gray-600">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Technical Support Section -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <h2 class="text-white p-6 text-xl font-bold" style={`background-color: ${designDNA.colors.secondary};`}>
+              {faqContent.sections.support.title}
+            </h2>
+            
+            <div class="space-y-4 p-6">
+              {faqContent.sections.support.faqs.map((faq, index) => (
+                <div class={index < faqContent.sections.support.faqs.length - 1 ? "border-b border-gray-200 pb-4" : "pb-4"}>
+                  <h3 class="text-lg font-bold mb-2">{faq.question}</h3>
+                  <p class="text-gray-600">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Additional Questions Section -->
+          {faqContent.sections.additional && (
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+              <h2 class="text-white p-6 text-xl font-bold" style={`background-color: ${designDNA.colors.accent};`}>
+                {faqContent.sections.additional.title}
+              </h2>
+              
+              <div class="space-y-4 p-6">
+                {faqContent.sections.additional.faqs.map((faq, index) => (
+                  <div class={index < faqContent.sections.additional.faqs.length - 1 ? "border-b border-gray-200 pb-4" : "pb-4"}>
+                    <h3 class="text-lg font-bold mb-2">{faq.question}</h3>
+                    <p class="text-gray-600">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Support -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          Still Have Questions?
+        </h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto">
+          If you couldn't find the answer you're looking for, our support team is here to help. 
+          Contact us for personalized assistance with your government phone application.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/apply" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-4 px-8 rounded-lg text-lg transition duration-300 no-underline text-center">
+            Apply Now
+          </a>
+          <a href="/contact" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg transition duration-300 no-underline text-center">
+            Contact Support
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+          Related Resources
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <a href="/eligibility" class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300 text-center">
+            <div class="text-blue-600 text-3xl mb-4">✅</div>
+            <h3 class="text-lg font-bold mb-2">Check Eligibility</h3>
+            <p class="text-gray-600">
+              Use our quick eligibility checker to see if you qualify for free phone service.
+            </p>
+          </a>
+          <a href="/programs" class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300 text-center">
+            <div class="text-green-600 text-3xl mb-4">📋</div>
+            <h3 class="text-lg font-bold mb-2">Program Guide</h3>
+            <p class="text-gray-600">
+              Learn about Lifeline and ACP programs and their benefits.
+            </p>
+          </a>
+          <a href="/providers" class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300 text-center">
+            <div class="text-purple-600 text-3xl mb-4" aria-label="Phone icon">📱</div>
+            <h3 class="text-lg font-bold mb-2">Compare Providers</h3>
+            <p class="text-gray-600">
+              Find the best provider for your needs and location.
+            </p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Additional Internal Links -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+          Learn More About Government Phone Programs
+        </h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <a href="/lifeline-program" class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300">
+            <h3 class="font-bold mb-2 text-blue-600">Lifeline Program</h3>
+            <p class="text-sm text-gray-600">Federal phone assistance program</p>
+          </a>
+          <a href="/acp-program" class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300">
+            <h3 class="font-bold mb-2 text-green-600">ACP Program</h3>
+            <p class="text-sm text-gray-600">Affordable Connectivity Program</p>
+          </a>
+          <a href="/tribal-programs" class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300">
+            <h3 class="font-bold mb-2 text-purple-600">Tribal Programs</h3>
+            <p class="text-sm text-gray-600">Enhanced benefits for tribal communities</p>
+          </a>
+          <a href="/state-programs" class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300">
+            <h3 class="font-bold mb-2 text-orange-600">State Programs</h3>
+            <p class="text-sm text-gray-600">State-specific assistance programs</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout> 

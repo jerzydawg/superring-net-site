@@ -1,0 +1,77 @@
+---
+/**
+ * Centered Footer - Everything centered with stacked layout
+ * Logo on top, links in middle, copyright at bottom
+ */
+import { getSiteName, getKeyword, getDomain, getDesignDNA } from '../../lib/site-config';
+import { getContentVariations, getFooterVariations, getNavVariations } from '../../lib/city-content-variations';
+
+const siteName = getSiteName();
+const keyword = getKeyword();
+const domain = getDomain();
+const designDNA = getDesignDNA();
+const content = getContentVariations(domain);
+const footerContent = getFooterVariations(domain, keyword);
+const navContent = getNavVariations(domain);
+
+const keywordLower = keyword.toLowerCase();
+const keywordDisplay = keywordLower.startsWith('my ') || keywordLower.startsWith('your ') || keywordLower.startsWith('a ') || keywordLower.startsWith('the ')
+  ? keyword
+  : `Your ${keyword}`;
+---
+
+<footer class="bg-slate-900 text-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+    <!-- Logo -->
+    <div class="flex justify-center mb-6">
+      <div class="w-16 h-16 rounded-2xl flex items-center justify-center" style={`background: linear-gradient(135deg, ${designDNA.colors.primary} 0%, ${designDNA.colors.secondary} 100%);`}>
+        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Brand -->
+    <h3 class="text-2xl font-bold mb-2">{siteName}</h3>
+    <p class="text-slate-400 mb-8 max-w-md mx-auto">
+      {footerContent.ctaHeadline.replace('!', '')} through government assistance programs.
+    </p>
+
+    <!-- CTA -->
+    <a href="/apply" class="no-underline inline-block font-bold py-3 px-8 rounded-full shadow-lg hover:scale-105 transition-all duration-200 mb-10" style={`background: ${designDNA.colors.accent}; color: white;`}>
+      {content.ctaButton}
+    </a>
+
+    <!-- Links -->
+    <div class="flex flex-wrap justify-center gap-6 mb-10">
+      {navContent.navItems.map((item) => (
+        <a href={item.href} class="text-slate-400 hover:text-white transition-colors">{item.label}</a>
+      ))}
+    </div>
+
+    <!-- Trust Badges -->
+    <div class="flex justify-center items-center flex-wrap gap-2 text-sm text-slate-500 mb-8">
+      <span>{footerContent.trustBadgeSet[0]}</span>
+      <span>•</span>
+      <span>{footerContent.trustBadgeSet[1]}</span>
+      <span>•</span>
+      <span>{footerContent.trustBadgeSet[2]}</span>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="mb-6">
+      <p class="text-slate-600 text-xs max-w-3xl mx-auto">
+        {footerContent.disclaimer}
+      </p>
+    </div>
+
+    <!-- Copyright -->
+    <div class="border-t border-slate-800 pt-8">
+      <p class="text-slate-500 text-sm">
+        {footerContent.copyright}
+      </p>
+    </div>
+  </div>
+</footer>
+
+

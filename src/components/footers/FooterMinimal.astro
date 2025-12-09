@@ -1,0 +1,53 @@
+---
+/**
+ * Minimal Footer - Ultra-clean, single-line footer
+ * Just logo, essential links, and copyright
+ */
+import { getSiteName, getDomain, getDesignDNA, getKeyword } from '../../lib/site-config';
+import { getFooterVariations, getNavVariations } from '../../lib/city-content-variations';
+
+const siteName = getSiteName();
+const domain = getDomain();
+const keyword = getKeyword();
+const designDNA = getDesignDNA();
+const footerContent = getFooterVariations(domain, keyword);
+const navContent = getNavVariations(domain);
+---
+
+<footer class="bg-white border-t border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <!-- Logo -->
+      <div class="flex items-center space-x-2">
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center" style={`background: ${designDNA.colors.primary};`}>
+          <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+          </svg>
+        </div>
+        <span class="font-semibold text-gray-900">{siteName}</span>
+      </div>
+
+      <!-- Links -->
+      <div class="flex items-center space-x-6">
+        <a href="/eligibility" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">{navContent.navItems.find(i => i.href === '/eligibility')?.label || 'Eligibility'}</a>
+        <a href="/providers" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">{navContent.navItems.find(i => i.href === '/providers')?.label || 'Providers'}</a>
+        <a href="/faq" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">{navContent.navItems.find(i => i.href === '/faq')?.label || 'FAQ'}</a>
+        <a href="/contact" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">{navContent.navItems.find(i => i.href === '/contact')?.label || 'Contact'}</a>
+      </div>
+
+      <!-- Copyright -->
+      <p class="text-gray-500 text-sm">
+        {footerContent.copyright}
+      </p>
+    </div>
+    
+    <!-- Disclaimer -->
+    <div class="mt-6 pt-4 border-t border-gray-100">
+      <p class="text-gray-400 text-xs text-center max-w-4xl mx-auto">
+        {footerContent.disclaimer}
+      </p>
+    </div>
+  </div>
+</footer>
+
+

@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Page Not Found | Free Government Phone";
+const description = "The page you're looking for doesn't exist. Find government phone assistance programs in your area.";
+---
+
+<Layout title={title} description={description}>
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+    <div class="mb-8">
+      <h1 class="text-6xl font-bold text-gray-900 mb-4">404</h1>
+      <h2 class="text-3xl font-bold text-gray-700 mb-4">Page Not Found</h2>
+      <p class="text-xl text-gray-600 mb-8">
+        The page you're looking for doesn't exist. It may have been moved or deleted.
+      </p>
+    </div>
+
+    <div class="bg-white rounded-2xl p-8 shadow-lg mb-8">
+      <h3 class="text-2xl font-bold text-gray-900 mb-4">Find Free Government Phone</h3>
+      <p class="text-gray-600 mb-6">
+        Looking for government phone assistance in your area? Use our tools to find programs near you.
+      </p>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <a href="/apply" rel="noreferrer" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+          Check Eligibility
+        </a>
+        <a href="/apply" rel="noreferrer" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+          View Programs
+        </a>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <a href="/" class="text-blue-600 hover:text-blue-800 font-semibold">
+        ← Back to Home
+      </a>
+    </div>
+  </main>
+</Layout> 
